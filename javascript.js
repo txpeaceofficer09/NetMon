@@ -1,23 +1,6 @@
 function loadTree() {
 	setInterval(function() {
-		var xmlhttp;
-		if (window.XMLHttpRequest)
-		{
-			xmlhttp=new XMLHttpRequest();
-		} else {
-			xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
-		}
-
-		xmlhttp.onreadystatechange=function()
-		{
-			if (xmlhttp.readyState==4 && xmlhttp.status==200)
-			{
-				document.getElementById('tree_container').innerHTML=xmlhttp.responseText;
-			}
-		}
-
-		xmlhttp.open("GET", 'tree.php', true);
-		xmlhttp.send();
+		ajaxRefresh();
 	}, 1000);
 }
 
@@ -30,4 +13,26 @@ function setCookie(cname, cvalue, exdays) {
 
 function stopAlarm() {
 	setCookie("noalarm", true, 1);
+	ajaxRefresh();
+}
+
+function ajaxRefresh() {
+                var xmlhttp;
+                if (window.XMLHttpRequest)
+                {
+                        xmlhttp=new XMLHttpRequest();
+                } else {
+                        xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
+                }
+
+                xmlhttp.onreadystatechange=function()
+                {
+                        if (xmlhttp.readyState==4 && xmlhttp.status==200)
+                        {
+                                document.getElementById('tree_container').innerHTML=xmlhttp.responseText;
+                        }
+                }
+
+                xmlhttp.open("GET", 'tree.php', true);
+                xmlhttp.send();
 }
