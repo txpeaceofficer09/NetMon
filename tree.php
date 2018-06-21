@@ -66,8 +66,8 @@ function printTree() {
 		echo "<div class=\"tree\"><ul><li><a href=\"#\" class=\"online\">".$child[1]."</a>";
 		fclose($fp);
 	} else {
-		echo "<audio src=\"alarm.mp3\" controls loop autoplay />";
-		echo "<div class=\"tree\"><ul><li><a href=\"#\" class=\"offline\">".$child[1]."</a>";
+		if (!isset($_COOKIE['noalarm'])) echo "<audio src=\"alarm.mp3\" loop autoplay />";
+		echo "<div class=\"tree\"><ul><li><a href=\"javascript:void(0);\" onClick=\"stopAlarm();\" class=\"offline\">".$child[1]."</a>";
 	}
 	printChildren(1);
 	echo "</li></ul></div>";
