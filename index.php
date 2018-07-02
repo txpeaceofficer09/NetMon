@@ -12,5 +12,6 @@
 			<h1>Network Monitor</h1>
 		</header>
 		<section id="tree_container"><center><img src="loading.gif" /></center></section>
+		<section id="printers_container"><center><img src="loading.gif" /></center></section>
 	</body>
 </html>

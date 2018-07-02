@@ -1,7 +1,8 @@
 function loadTree() {
 	setInterval(function() {
-		ajaxRefresh();
-	}, 1000);
+		ajaxRefresh('tree.php', 'tree_container');
+		ajaxRefresh('list_printers.php', 'printers_container');
+	}, 10000);
 }
 
 function setCookie(cname, cvalue, exdays) {
@@ -13,10 +14,10 @@ function setCookie(cname, cvalue, exdays) {
 
 function stopAlarm() {
 	setCookie("noalarm", true, 1);
-	ajaxRefresh();
+	ajaxRefresh('tree.php', 'tree_container');
 }
 
-function ajaxRefresh() {
+function ajaxRefresh(url, e) {
                 var xmlhttp;
                 if (window.XMLHttpRequest)
                 {
@@ -29,10 +30,10 @@ function ajaxRefresh() {
                 {
                         if (xmlhttp.readyState==4 && xmlhttp.status==200)
                         {
-                                document.getElementById('tree_container').innerHTML=xmlhttp.responseText;
+                                document.getElementById(e).innerHTML=xmlhttp.responseText;
                         }
                 }
 
-                xmlhttp.open("GET", 'tree.php', true);
+                xmlhttp.open("GET", url, true);
                 xmlhttp.send();
 }

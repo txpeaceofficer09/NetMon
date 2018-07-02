@@ -1,5 +1,12 @@
 <?php
 
+function cmp($a, $b) {
+	if ($a[1] == $b[1]) {
+		return 0;
+	}
+	return ($a[1] < $b[1]) ? -1 : 1;
+}
+
 function chkHost($child) {
 	if ($fp=fsockopen($child[2], $child[3], $errno, $errstr, 0.2)) {
 		$retVal = "online";
@@ -24,7 +31,7 @@ $db = getDB();
 
 function getChildren($line) {
 	global $db;
-	reset($db);
+	// reset($db);
 	$retArr = array();
 
 	foreach ($db AS $num=>$arr) {
@@ -32,6 +39,8 @@ function getChildren($line) {
 			array_push($retArr, $arr);
 		}
 	}
+
+	uasort($retArr, 'cmp');
 
 	return $retArr;
 }
@@ -43,10 +52,10 @@ function printChildren($line) {
 		echo "<ul>";
 		foreach ($arr AS $num=>$child) {
 			if ($fp=fsockopen($child[2], $child[3], $errno, $errstr, 0.2)) {
-			echo "<li><a href=\"#\" class=\"online\">".$child[1]."</a>";
+			echo "<li><a href=\"#\" class=\"online\">".$child[1]."<br />(".$child[2].":".$child[3].")</a>";
 			fclose($fp);
 		} else {
-			echo "<li><a href=\"#\" class=\"offline\">".$child[1]."</a>";
+			echo "<li><a href=\"#\" class=\"offline\">".$child[1]."<br />(".$child[2].":".$child[3].")</a>";
 		}
 			$child[0] = (int)$child[0];
 			if (count(getChildren($child[0])) > 0) {
@@ -63,11 +72,11 @@ function printTree() {
 	$child = $db[0];
 
 	if ($fp=fsockopen($child[2], $child[3], $errno, $errstr, 1)) {
-		echo "<div class=\"tree\"><ul><li><a href=\"#\" class=\"online\">".$child[1]."</a>";
+		echo "<div class=\"tree\"><ul><li><a href=\"#\" class=\"online\">".$child[1]."<br />(".$child[2].":".$child[3].")</a>";
 		fclose($fp);
 	} else {
 		if (!isset($_COOKIE['noalarm'])) echo "<audio src=\"alarm.mp3\" loop autoplay />";
-		echo "<div class=\"tree\"><ul><li><a href=\"javascript:void(0);\" onClick=\"stopAlarm();\" class=\"offline\">".$child[1]."</a>";
+		echo "<div class=\"tree\"><ul><li><a href=\"javascript:void(0);\" onClick=\"stopAlarm();\" class=\"offline\">".$child[1]."<br />(".$child[2].":".$child[3].")</a>";
 	}
 	printChildren(1);
 	echo "</li></ul></div>";

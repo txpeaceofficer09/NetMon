@@ -111,3 +111,31 @@ We will apply the hover effect the the lineage of the element also
 header {
 	font-family: Verdana, Arial;
 }
+
+/*
+#printers_container {
+	position: relative;
+	top: 550px;
+	border: 1px solid #000;
+	font-family: Verdana, Arial;
+	font-size: 11px;
+}
+
+#printers_container::before {
+	content: "Printers";
+	border: 1px solid #000;
+	border-radius: 5px 5px 0px 0px;
+	padding: 5px;
+	position: relative;
+	top: -25px;
+	left: 60px;
+}
+*/
+
+span {
+	display: inline-block;
+	border: 1px solid #888;
+	border-radius: 5px;
+	margin: 5px;
+	padding: 3px;
+}
