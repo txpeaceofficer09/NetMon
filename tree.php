@@ -51,8 +51,10 @@ function printChildren($line) {
 	if (count($arr) > 0) {
 		echo "<ul>";
 		foreach ($arr AS $num=>$child) {
+			$start = microtime(true);
 			if ($fp=fsockopen($child[2], $child[3], $errno, $errstr, 0.2)) {
-			echo "<li><a href=\"#\" class=\"online\">".$child[1]."<br />(".$child[2].":".$child[3].")</a>";
+			$time = microtime(true) - $start;
+			echo "<li><a href=\"#\" class=\"online\">".$child[1]."<br />(".$child[2].":".$child[3].")<br />".number_format($time*1000,1,'.','')." ms</a>";
 			fclose($fp);
 		} else {
 			echo "<li><a href=\"#\" class=\"offline\">".$child[1]."<br />(".$child[2].":".$child[3].")</a>";
@@ -71,11 +73,13 @@ function printTree() {
 	global $db;
 	$child = $db[0];
 
+	$start = microtime(true);
 	if ($fp=fsockopen($child[2], $child[3], $errno, $errstr, 1)) {
-		echo "<div class=\"tree\"><ul><li><a href=\"#\" class=\"online\">".$child[1]."<br />(".$child[2].":".$child[3].")</a>";
+		$time = microtime(true) - $start;
+		echo "<div class=\"tree\"><ul><li><a href=\"#\" class=\"online\">".$child[1]."<br />(".$child[2].":".$child[3].")<br />".number_format($time*1000,1,'.','')." ms</a>";
 		fclose($fp);
 	} else {
-		if (!isset($_COOKIE['noalarm'])) echo "<audio src=\"alarm.mp3\" loop autoplay />";
+		// if (!isset($_COOKIE['noalarm'])) echo "<audio src=\"alarm.mp3\" loop autoplay />";
 		echo "<div class=\"tree\"><ul><li><a href=\"javascript:void(0);\" onClick=\"stopAlarm();\" class=\"offline\">".$child[1]."<br />(".$child[2].":".$child[3].")</a>";
 	}
 	printChildren(1);

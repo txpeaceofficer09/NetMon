@@ -3,6 +3,8 @@ function loadTree() {
 		ajaxRefresh('tree.php', 'tree_container');
 		ajaxRefresh('list_printers.php', 'printers_container');
 	}, 10000);
+	ajaxRefresh('tree.php', 'tree_container');
+	ajaxRefresh('list_printers.php', 'printers_container');
 }
 
 function setCookie(cname, cvalue, exdays) {
