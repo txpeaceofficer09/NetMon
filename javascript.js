@@ -1,10 +1,33 @@
+var campus = '';
+var campuses = ['', 'es', 'jh', 'hs']
+var i = 0;
+
 function loadTree() {
 	setInterval(function() {
 		ajaxRefresh('tree.php', 'tree_container');
-		ajaxRefresh('list_printers.php', 'printers_container');
-	}, 10000);
+		/* ajaxRefresh('list_printers.php', 'printers_container'); */
+	}, 5000);
 	ajaxRefresh('tree.php', 'tree_container');
-	ajaxRefresh('list_printers.php', 'printers_container');
+	/* ajaxRefresh('list_printers.php', 'printers_container'); */
+	setInterval(function() {
+		rotateScreens();
+	}, 20000);
+}
+
+function rotateScreens() {
+/*
+	$('section').each(function() {
+		this.toggle(display);
+	});
+*/
+
+	i++;
+
+	if (i == campuses.length) {
+		i = 0;
+	}
+
+	campus = campuses[i];
 }
 
 function setCookie(cname, cvalue, exdays) {
@@ -36,6 +59,7 @@ function ajaxRefresh(url, e) {
                         }
                 }
 
-                xmlhttp.open("GET", url, true);
+                xmlhttp.open("GET", url+'?campus='+campus, true);
                 xmlhttp.send();
+	/* console.log(url+'?campus='+campus); */
 }

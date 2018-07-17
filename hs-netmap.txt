@@ -1,0 +1,14 @@
+1|Internet|8.8.8.8|53|0
+7|High School<br />Juniper 4600|10.1.1.100|22|1
+11|Science Wing<br />HP 2848|10.1.1.106|23|7
+12|Room 59<br />5130|10.1.1.210|22|7
+13|Gym West IDF|10.1.1.206|22|7
+14|Gym East IDF|10.1.1.207|22|18
+15|VoTech|10.1.1.209|22|13
+16|Main IDF<br />HP 2848|10.1.1.116|23|11
+17|Library<br />HP 2824|10.1.1.108|23|7
+18|James Desk<br />HP 2824|10.1.1.50|23|17
+20|Science Wing<br />HP 2600|10.1.1.105|23|7
+21|Main IDF<br />Aruba 2530|10.1.1.130|22|16
+22|HSMainCamera<br />HP 2600|10.1.1.81|23|13
+23|HSWirelessMain1<br />HP 2600|10.1.1.80|23|22

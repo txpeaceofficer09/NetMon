@@ -1,5 +1,7 @@
 <?php
 
+$campus = (isset($_GET['campus']) && $_GET['campus'] != '') ? $_GET['campus'].'-netmap.txt' : 'netmap.txt';
+
 function cmp($a, $b) {
 	if ($a[1] == $b[1]) {
 		return 0;
@@ -19,8 +21,9 @@ function chkHost($child) {
 }
 
 function getDB() {
+	global $campus;
 	$db = array();
-	$file = file('netmap.txt');
+	$file = file($campus);
 	foreach ($file AS $num=>$line) {
 		$db[$num] = explode('|', $line);
 	}
@@ -57,7 +60,8 @@ function printChildren($line) {
 			echo "<li><a href=\"#\" class=\"online\">".$child[1]."<br />(".$child[2].":".$child[3].")<br />".number_format($time*1000,1,'.','')." ms</a>";
 			fclose($fp);
 		} else {
-			echo "<li><a href=\"#\" class=\"offline\">".$child[1]."<br />(".$child[2].":".$child[3].")</a>";
+			$time = microtime(true) - $start;
+			echo "<li><a href=\"#\" class=\"offline\">".$child[1]."<br />(".$child[2].":".$child[3].")<br />&gt;".number_format($time*1000,1,'.','')." ms</a>";
 		}
 			$child[0] = (int)$child[0];
 			if (count(getChildren($child[0])) > 0) {
@@ -80,11 +84,36 @@ function printTree() {
 		fclose($fp);
 	} else {
 		// if (!isset($_COOKIE['noalarm'])) echo "<audio src=\"alarm.mp3\" loop autoplay />";
-		echo "<div class=\"tree\"><ul><li><a href=\"javascript:void(0);\" onClick=\"stopAlarm();\" class=\"offline\">".$child[1]."<br />(".$child[2].":".$child[3].")</a>";
+		$time = microtime(true) - $start;
+		echo "<div class=\"tree\"><ul><li><a href=\"javascript:void(0);\" onClick=\"stopAlarm();\" class=\"offline\">".$child[1]."<br />(".$child[2].":".$child[3].")<br />&gt;".number_format($time*1000,1,'.','')." ms</a>";
 	}
 	printChildren(1);
 	echo "</li></ul></div>";
 }
+
+
+$header = ['es-netmap.txt'=>'Elementary', 'jh-netmap.txt'=>'Junior High', 'hs-netmap.txt'=>'High School'];
+
+echo "<h1>".(isset($header[$campus]) ? $header[$campus] : 'Overview')."</h1>";
+
+/*
+switch($campus) {
+	case 'es':
+		echo "<h1>Elementary</h1>";
+		break;
+	case 'jh':
+		echo "<h1>Junior High</h1>";
+		break;
+	case 'hs':
+		echo "<h1>High School</h1>";
+		break;
+	default:
+		echo "<h1>Overview</h1>";
+		break;
+}
+
+echo "<h2>Campus: ".$campus."</h2>";
+*/
 
 printTree();
 

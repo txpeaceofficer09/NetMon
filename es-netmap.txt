@@ -1,0 +1,5 @@
+1|Internet<br />Google DNS|8.8.8.8|53|0
+5|Elementary<br />Juniper EX-4300|10.1.1.99|22|1
+8|South IDF|10.1.1.111|23|5
+9|North IDF|10.1.1.115|23|5
+10|5th/6th Hall|10.1.1.114|23|5
