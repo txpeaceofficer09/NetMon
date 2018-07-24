@@ -1,7 +1,20 @@
 * {margin: 0; padding: 0;}
 
 header {
-	display: none;
+	position: absolute;
+	z-index: -999;
+	width: 100%;
+	top: 0px;
+	left: 0px;
+	height: 90px;
+	background: maroon;
+	background-image: url('Kirbyville-Logo.png');
+	background-repeat: no-repeat;
+	background-attachment: scroll;
+	background-position: 99% 50%;
+	border: 2px solid gold;
+	border-width: 0px 0px 2px 0px;
+	background-size: 80px;
 }
 
 .tree ul {
@@ -76,8 +89,8 @@ right connector from last child*/
 	padding: 5px 10px;
 	text-decoration: none;
 	color: #666;
-	font-family: arial, verdana, tahoma;
-	font-size: 11px;
+	font-family: segoe ui, tahoma, verdana, arial;
+	font-size: 10px;
 	display: inline-block;
 	
 	border-radius: 5px;
@@ -146,4 +159,190 @@ span {
 	border-radius: 5px;
 	margin: 5px;
 	padding: 3px;
+}
+
+input[type=button] {
+	-moz-box-shadow:inset 0px 1px 0px 0px #fff6af;
+	-webkit-box-shadow:inset 0px 1px 0px 0px #fff6af;
+	box-shadow:inset 0px 1px 0px 0px #fff6af;
+	background:-webkit-gradient(linear, left top, left bottom, color-stop(0.05, #ffec64), color-stop(1, #ffab23));
+	background:-moz-linear-gradient(top, #ffec64 5%, #ffab23 100%);
+	background:-webkit-linear-gradient(top, #ffec64 5%, #ffab23 100%);
+	background:-o-linear-gradient(top, #ffec64 5%, #ffab23 100%);
+	background:-ms-linear-gradient(top, #ffec64 5%, #ffab23 100%);
+	background:linear-gradient(to bottom, #ffec64 5%, #ffab23 100%);
+	filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#ffec64', endColorstr='#ffab23',GradientType=0);
+	background-color:#ffec64;
+	-moz-border-radius:6px;
+	-webkit-border-radius:6px;
+	border-radius:6px;
+	border:1px solid #ffaa22;
+	display:inline-block;
+	cursor:pointer;
+	color:#333333;
+	font-family:Arial;
+	font-size:15px;
+	font-weight:bold;
+	padding:6px 24px;
+	text-decoration:none;
+	text-shadow:0px 1px 0px #ffee66;
+}
+input[type=button]:hover {
+	background:-webkit-gradient(linear, left top, left bottom, color-stop(0.05, #ffab23), color-stop(1, #ffec64));
+	background:-moz-linear-gradient(top, #ffab23 5%, #ffec64 100%);
+	background:-webkit-linear-gradient(top, #ffab23 5%, #ffec64 100%);
+	background:-o-linear-gradient(top, #ffab23 5%, #ffec64 100%);
+	background:-ms-linear-gradient(top, #ffab23 5%, #ffec64 100%);
+	background:linear-gradient(to bottom, #ffab23 5%, #ffec64 100%);
+	filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#ffab23', endColorstr='#ffec64',GradientType=0);
+	background-color:#ffab23;
+}
+input[type=button]:active {
+	position:relative;
+	top:1px;
+}
+
+.flipswitch {
+  position: relative;
+  top: 8px;
+  width: 86px;
+  -webkit-user-select:none;
+  -moz-user-select:none;
+  -ms-user-select: none;
+  display: inline-block;
+}
+.flipswitch input[type=checkbox] {
+  display: none;
+}
+.flipswitch-label {
+  display: block;
+  overflow: hidden;
+  cursor: pointer;
+  border: 1px solid #ffaa22;
+  border-radius: 50px;
+}
+.flipswitch-inner {
+  width: 200%;
+  margin-left: -100%;
+  -webkit-transition: margin 0.3s ease-in 0s;
+  -moz-transition: margin 0.3s ease-in 0s;
+  -ms-transition: margin 0.3s ease-in 0s;
+  -o-transition: margin 0.3s ease-in 0s;
+  transition: margin 0.3s ease-in 0s;
+}
+.flipswitch-inner:before, .flipswitch-inner:after {
+  float: left;
+  width: 50%;
+  height: 24px;
+  padding: 0;
+  line-height: 24px;
+  font-size: 18px;
+  color: white;
+  font-family: Trebuchet, Arial, sans-serif;
+  font-weight: bold;
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+}
+.flipswitch-inner:before {
+  content: "ON";
+  padding-left: 12px;
+  background: linear-gradient(to bottom, #ffec64 5%, #ffab23 100%);
+  color: #000000;
+}
+.flipswitch-inner:after {
+  content: "OFF";
+  padding-right: 12px;
+  background: linear-gradient(to bottom, #fefefe 5%, #ebebeb 100%);
+  color: #000000;
+  text-align: right;
+}
+.flipswitch-switch {
+  width: 31px;
+  margin: -3.5px;
+  background: #FFFFFF;
+  border: 1px solid #ffaa22;
+  border-radius: 50px;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  right: 59px;
+  -webkit-transition: all 0.3s ease-in 0s;
+  -moz-transition: all 0.3s ease-in 0s;
+  -ms-transition: all 0.3s ease-in 0s;
+  -o-transition: all 0.3s ease-in 0s;
+  transition: all 0.3s ease-in 0s;
+}
+.flipswitch-cb:checked + .flipswitch-label .flipswitch-inner {
+  margin-left: 0;
+}
+.flipswitch-cb:checked + .flipswitch-label .flipswitch-switch {
+  right: 0;
+}
+
+.ribbon {padding-left:50px}
+.ribbon-background {position:absolute;top:0;right:0;font-size:8px;color:#cccccc;}
+.ribbon-background a {color:#cccccc;text-decoration:none;font-weight:normal;}
+.ribbon-background a:hover {color:#cccccc;text-decoration:none;font-weight:normal;}
+.theribbon{position: relative;width: 250px;font-size: 1.5em;font-weight: bold;padding: 6px 20px 6px 71px;margin: 30px 10px 10px 0px;color: #000000;background-color: #FFCC00;text-shadow: 0px 1px 2px #bbb;-webkit-box-shadow: 0px 2px 4px #888;-moz-box-shadow: 0px 2px 4px #888;box-shadow: 0px 2px 4px #888;}
+.theribbon:before, .theribbon:after {content: ' ';position: absolute;width: 0;height: 0;}
+.theribbon:before{width: 30px;left: -30px;top: 12px;border-width: 20px 10px;border-style: solid;border-color: #FFCC00 #FFCC00 #FFCC00 transparent;}
+.theribbon:after{width: 30px; left: 0px;top: 100%;border-width: 5px 10px;border-style: solid;border-color: #666666 #666666 transparent transparent;}
+
+h1 a {color:#cccccc;text-decoration:none;font-weight:normal;}
+h1 a:hover {color:#cccccc;text-decoration:none;font-weight:normal;}
+h1 {
+	font-size: 32px;
+	font-family: Palatino Linotype;
+	color: #ffffff;
+	font-weight: bold;
+	font-style: oblique;
+	text-shadow:0 1px 0 #ccc, 0 2px 0 #c9c9c9,0 3px 0 #bbb, 0 4px 0 #b9b9b9, 0 5px 0 #aaa, 0 6px 1px rgba(0,0,0,.1), 0 0 5px rgba(0,0,0,.1), 0 1px 3px rgba(0,0,0,.3), 0 3px 5px rgba(0,0,0,.2), 0 5px 10px rgba(0,0,0,.25), 0 10px 10px rgba(0,0,0,.2), 0 20px 20px rgba(0,0,0,.15);
+	position: relative;
+	left: 10px;
+}
+/* CSS by GenerateCSS.com */
+
+/*
+body {
+	background-color: #FFFFFF;
+	background-image: url("Kirbyville-Logo.png");
+	background-repeat: no-repeat;
+	background-attachment: fixed;
+	background-position: 99% 1%;
+	background-size: 96px;
+}
+*/
+
+
+.container {
+	position: relative;
+	top: 60px;
+	font-family: Verdana;
+	font-size: 10pt;
+	text-align: center;
+}
+
+.container div {
+	display: inline-block;
+	border: 1px solid #ccc;
+	border-radius: 5px;
+	margin: 3px;
+	padding: 3px;
+	min-width: 160px;
+}
+
+.container span {
+	display: block;
+	border: 0px;
+	margin: 0px;
+	padding: 0px;
+}
+
+.container .active {
+	background: #0f0;
+}
+
+.container .inactive {
+	background: #f00;
 }

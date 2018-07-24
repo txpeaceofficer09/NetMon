@@ -1,13 +1,14 @@
 var campus = '';
-var campuses = ['', 'es', 'jh', 'hs']
+var campuses = ['', 'es', 'jh', 'hs', 'cams', 'printers', 'servers', 'aps']
 var i = 0;
+var page = 'tree.php';
 
 function loadTree() {
 	setInterval(function() {
-		ajaxRefresh('tree.php', 'tree_container');
+		ajaxRefresh(page, 'tree_container');
 		/* ajaxRefresh('list_printers.php', 'printers_container'); */
 	}, 5000);
-	ajaxRefresh('tree.php', 'tree_container');
+	ajaxRefresh(page, 'tree_container');
 	/* ajaxRefresh('list_printers.php', 'printers_container'); */
 	setInterval(function() {
 		rotateScreens();
@@ -21,13 +22,40 @@ function rotateScreens() {
 	});
 */
 
-	i++;
+	/*if ( $('#playbtn').val() == 'Pause' ) {*/
+	if ( $('#fs').prop("checked") ) {
+		i++;
 
-	if (i == campuses.length) {
-		i = 0;
+		if (i == campuses.length) {
+			i = 0;
+		}
+
+		if (i < 4) {
+			page = 'tree.php';
+		} else {
+			page = 'devices.php';
+		}
+
+		campus = campuses[i];
 	}
+}
 
-	campus = campuses[i];
+function toggleTimer() {
+	if ( $('#playbtn').val() == 'Pause' ) {
+		$('#playbtn').val('Play');
+	} else {
+		$('#playbtn').val('Pause');
+	}
+}
+
+function changeScreen(e) {
+	campus = campuses[e];
+	if (e < 4) {
+		page = 'tree.php';
+	} else {
+		page = 'devices.php';
+	}
+	ajaxRefresh(page, 'tree_container');
 }
 
 function setCookie(cname, cvalue, exdays) {
@@ -43,6 +71,7 @@ function stopAlarm() {
 }
 
 function ajaxRefresh(url, e) {
+		/* url = page; */
                 var xmlhttp;
                 if (window.XMLHttpRequest)
                 {
@@ -61,5 +90,5 @@ function ajaxRefresh(url, e) {
 
                 xmlhttp.open("GET", url+'?campus='+campus, true);
                 xmlhttp.send();
-	/* console.log(url+'?campus='+campus); */
+	console.log(url+'?campus='+campus+':'+i);
 }

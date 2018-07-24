@@ -54,14 +54,15 @@ function printChildren($line) {
 	if (count($arr) > 0) {
 		echo "<ul>";
 		foreach ($arr AS $num=>$child) {
+			$handler = (intval($child[3]) == 22) ? 'ssh://' : 'telnet://';
 			$start = microtime(true);
 			if ($fp=fsockopen($child[2], $child[3], $errno, $errstr, 0.2)) {
 			$time = microtime(true) - $start;
-			echo "<li><a href=\"#\" class=\"online\">".$child[1]."<br />(".$child[2].":".$child[3].")<br />".number_format($time*1000,1,'.','')." ms</a>";
+			echo "<li><a href=\"".$handler.$child[2]."\" class=\"online\">".$child[1]."<br />(".$child[2].":".$child[3].")<br />".number_format($time*1000,1,'.','')." ms</a>";
 			fclose($fp);
 		} else {
 			$time = microtime(true) - $start;
-			echo "<li><a href=\"#\" class=\"offline\">".$child[1]."<br />(".$child[2].":".$child[3].")<br />&gt;".number_format($time*1000,1,'.','')." ms</a>";
+			echo "<li><a href=\"".$handler.$child[2]."\" class=\"offline\">".$child[1]."<br />(".$child[2].":".$child[3].")<br />&gt;".number_format($time*1000,1,'.','')." ms</a>";
 		}
 			$child[0] = (int)$child[0];
 			if (count(getChildren($child[0])) > 0) {
@@ -79,8 +80,9 @@ function printTree() {
 
 	$start = microtime(true);
 	if ($fp=fsockopen($child[2], $child[3], $errno, $errstr, 1)) {
+		$handler = (intval($child[3]) == 22) ? 'ssh://' : 'telnet://';
 		$time = microtime(true) - $start;
-		echo "<div class=\"tree\"><ul><li><a href=\"#\" class=\"online\">".$child[1]."<br />(".$child[2].":".$child[3].")<br />".number_format($time*1000,1,'.','')." ms</a>";
+		echo "<div class=\"tree\"><ul><li><a href=\"".$handler.$child[2]."\" class=\"online\">".$child[1]."<br />(".$child[2].":".$child[3].")<br />".number_format($time*1000,1,'.','')." ms</a>";
 		fclose($fp);
 	} else {
 		// if (!isset($_COOKIE['noalarm'])) echo "<audio src=\"alarm.mp3\" loop autoplay />";
@@ -94,6 +96,7 @@ function printTree() {
 
 $header = ['es-netmap.txt'=>'Elementary', 'jh-netmap.txt'=>'Junior High', 'hs-netmap.txt'=>'High School'];
 
+// echo "<div class=\"ribbon\"><div class=\"theribbon\">".(isset($header[$campus]) ? $header[$campus] : 'Overview')."</div><div class=\"ribbon-background\">Powered by: <a href=\"http://www.generatecss.com/\">CSS Generator</a></div></div>";
 echo "<h1>".(isset($header[$campus]) ? $header[$campus] : 'Overview')."</h1>";
 
 /*

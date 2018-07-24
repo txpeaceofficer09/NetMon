@@ -1,14 +1,23 @@
 1|Internet|8.8.8.8|53|0
 7|High School<br />Juniper 4600|10.1.1.100|22|1
-11|Science Wing<br />HP 2848|10.1.1.106|23|7
-12|Room 59<br />5130|10.1.1.210|22|7
-13|Gym West IDF|10.1.1.206|22|7
+11|Science Wing<br />HSSciWing-2848|10.1.1.106|23|7
+12|Room 59<br />HS-IDF-Rm59-PoE-2530|10.1.1.210|22|7
+13|Gym West IDF<br />HS-IDF-Gym-West-PoE-2530|10.1.1.206|22|25
 14|Gym East IDF|10.1.1.207|22|18
-15|VoTech|10.1.1.209|22|13
-16|Main IDF<br />HP 2848|10.1.1.116|23|11
-17|Library<br />HP 2824|10.1.1.108|23|7
+15|VoTech<br />HS-IDF-VoTech-PoE-2530|10.1.1.209|22|13
+16|Main IDF<br />HSMain-2848|10.1.1.116|23|29
+17|Library<br />HSLibrary-2824|10.1.1.108|23|7
 18|James Desk<br />HP 2824|10.1.1.50|23|17
-20|Science Wing<br />HP 2600|10.1.1.105|23|7
-21|Main IDF<br />Aruba 2530|10.1.1.130|22|16
+20|Science Wing<br />HSSciWing-3-2600PWR|10.1.1.105|23|7
+21|Main IDF<br />HSMain-2530|10.1.1.130|22|16
 22|HSMainCamera<br />HP 2600|10.1.1.81|23|13
 23|HSWirelessMain1<br />HP 2600|10.1.1.80|23|22
+25|HS-MDF-PoE-5130|10.1.1.4|22|7
+26|HS-Library-2600PWR|10.1.1.54|23|17
+27|ProCurve Switch 2824|10.1.1.21|23|17
+28|HSWirelesSci1|10.1.1.82|23|11
+29|HSSciWing-2824|10.1.1.107|23|11
+30|HSSciWing-3-2848|10.1.1.5|23|11
+31|HSSciWing-2-2848|10.1.1.120|23|11
+32|HS-IDF-SCI-PoE-2530|10.1.1.208|22|31
+33|HSMainPhone|10.1.1.103|23|16
