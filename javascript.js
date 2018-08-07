@@ -1,7 +1,11 @@
 var campus = '';
-var campuses = ['', 'es', 'jh', 'hs', 'cams', 'printers', 'servers', 'aps']
+var campuses = ['', 'es', 'jh', 'hs', 'cams', 'printers', 'servers']
 var i = 0;
 var page = 'tree.php';
+
+$(document).ready(function() {
+	loadTree();
+});
 
 function loadTree() {
 	setInterval(function() {
@@ -91,4 +95,24 @@ function ajaxRefresh(url, e) {
                 xmlhttp.open("GET", url+'?campus='+campus, true);
                 xmlhttp.send();
 	console.log(url+'?campus='+campus+':'+i);
+}
+
+function showTooltip(t) {
+	var e = window.event;
+
+	var posX = e.clientX;
+	var posY = e.clientY;
+
+	var text = $(t).attr('title');
+
+	$('.tooltip').css('top: '+posY+'px;');
+	$('.tooltip').css('left: '+posX+'px;');
+
+	$('.tooltip').html(text);
+
+	$('.tooltip').css('display: block;');
+}
+
+function hideTooltip() {
+	$('.tooltip').css('display: hidden;');
 }

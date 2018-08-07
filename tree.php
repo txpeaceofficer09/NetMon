@@ -58,11 +58,11 @@ function printChildren($line) {
 			$start = microtime(true);
 			if ($fp=fsockopen($child[2], $child[3], $errno, $errstr, 0.2)) {
 			$time = microtime(true) - $start;
-			echo "<li><a href=\"".$handler.$child[2]."\" class=\"online\">".$child[1]."<br />(".$child[2].":".$child[3].")<br />".number_format($time*1000,1,'.','')." ms</a>";
+			echo "<li onMouseOver=\"showTooltip(this);\" title=\"".$child[5]."\" onMouseOut=\"hideTooltip();\"><a href=\"".$handler.$child[2]."\" class=\"online\">".$child[1]."<br />(".$child[2].":".$child[3].")<br />".number_format($time*1000,1,'.','')." ms</a>";
 			fclose($fp);
 		} else {
 			$time = microtime(true) - $start;
-			echo "<li><a href=\"".$handler.$child[2]."\" class=\"offline\">".$child[1]."<br />(".$child[2].":".$child[3].")<br />&gt;".number_format($time*1000,1,'.','')." ms</a>";
+			echo "<li onMouseOver=\"showTooltip(this);\" title=\"".$child[5]."\" onMouseOut=\"hideTooltip();\"><a href=\"".$handler.$child[2]."\" class=\"offline\">".$child[1]."<br />(".$child[2].":".$child[3].")<br />&gt;".number_format($time*1000,1,'.','')." ms</a>";
 		}
 			$child[0] = (int)$child[0];
 			if (count(getChildren($child[0])) > 0) {
@@ -82,12 +82,12 @@ function printTree() {
 	if ($fp=fsockopen($child[2], $child[3], $errno, $errstr, 1)) {
 		$handler = (intval($child[3]) == 22) ? 'ssh://' : 'telnet://';
 		$time = microtime(true) - $start;
-		echo "<div class=\"tree\"><ul><li><a href=\"".$handler.$child[2]."\" class=\"online\">".$child[1]."<br />(".$child[2].":".$child[3].")<br />".number_format($time*1000,1,'.','')." ms</a>";
+		echo "<div class=\"tree\"><ul><li onMouseOver=\"showTooltip(this);\" onMouseOut=\"hideTooltip();\"><a href=\"".$handler.$child[2]."\" class=\"online\">".$child[1]."<br />(".$child[2].":".$child[3].")<br />".number_format($time*1000,1,'.','')." ms</a>";
 		fclose($fp);
 	} else {
 		// if (!isset($_COOKIE['noalarm'])) echo "<audio src=\"alarm.mp3\" loop autoplay />";
 		$time = microtime(true) - $start;
-		echo "<div class=\"tree\"><ul><li><a href=\"javascript:void(0);\" onClick=\"stopAlarm();\" class=\"offline\">".$child[1]."<br />(".$child[2].":".$child[3].")<br />&gt;".number_format($time*1000,1,'.','')." ms</a>";
+		echo "<div class=\"tree\"><ul><li onMouseOver=\"showTooltip(this);\" onMouseOut=\"hideTooltip();\"><a href=\"javascript:void(0);\" onClick=\"stopAlarm();\" class=\"offline\">".$child[1]."<br />(".$child[2].":".$child[3].")<br />&gt;".number_format($time*1000,1,'.','')." ms</a>";
 	}
 	printChildren(1);
 	echo "</li></ul></div>";

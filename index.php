@@ -23,7 +23,7 @@ if (isMobile()) {
 ?>
 	</head>
 
-	<body onLoad="loadTree();">
+	<body>
 		<header>
 			&nbsp;
 		</header>
@@ -34,17 +34,16 @@ if (isMobile()) {
 		<input type="button" onClick="changeScreen(4);" value="Cameras" />
 		<input type="button" onClick="changeScreen(5);" value="Printers" />
 		<input type="button" onClick="changeScreen(6);" value="Servers" />
-		<!--<input type="button" onClick="changeScreen(7);" value="Access Points" />-->
-
-		<!--<input id="playbtn" type="button" onClick="toggleTimer();" value="Pause" />-->
-<div class="flipswitch">
-    <input type="checkbox" name="flipswitch" class="flipswitch-cb" id="fs" checked>
-    <label class="flipswitch-label" for="fs">
-        <div class="flipswitch-inner"></div>
-        <div class="flipswitch-switch"></div>
-    </label>
-</div>
+		<div class="flipswitch">
+			<input type="checkbox" name="flipswitch" class="flipswitch-cb" id="fs" checked>
+			<label class="flipswitch-label" for="fs">
+				<div class="flipswitch-inner"></div>
+				<div class="flipswitch-switch"></div>
+			</label>
+		</div>
 		<section id="tree_container"><center><img src="loading.gif" /></center></section>
 		<!--<section id="printers_container"><center><img src="loading.gif" /></center></section>-->
+
+		<div class="tooltip"></div>
 	</body>
 </html>
